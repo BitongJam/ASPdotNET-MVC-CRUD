@@ -1,0 +1,48 @@
+﻿@model IEnumerable<CRUD.Models.StudentModel>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<div class="h3">
+    @Html.ViewBag.Message
+</div>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.City)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Address)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Name)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.City)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Address)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.Id }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.Id },
+                new { 
+                    onclick = "return confirm('Are sure you want to delete this?')"
+                }
+               )
+        </td>
+        <script>
+            alert(@ViewBag.AlertMsg);
+        </script>
+    </tr>
+}
+
+</table>
